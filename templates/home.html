@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome {{ user }}</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    {% include 'partials/navbar.html' %}
+    <div class="container">
+        <div class="section">
+            <form method="post" action="/upload_csv/" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="fileInput">
+                    <img src="{% static 'images/add.png' %}" class="add-image">
+                </label>
+                <br>
+                <input type="file" id="fileInput" class="fileInput" onchange="checkFile(); displayFileName();" name="file">
+                <button type="submit" disabled="true">Upload</button>
+            </form>
+        </div>
+
+        <div class="section">
+            <button onclick="window.location.href='{% url 'get_csv' %}'" class="">Download</button>
+        </div>
+
+    </div>
+
+    <script>
+        function displayFileName() {
+            const input = document.querySelector('.fileInput');
+            const fileName = input.files[0].name;
+            const fileNameDisplay = document.getElementById('file-name');
+            fileNameDisplay.innerText = fileName;
+        }
+        function checkFile() {
+            const fileInput = document.querySelector('.fileInput');
+            const uploadButton = document.querySelector('button[type="submit"]');
+            if (fileInput.files.length > 0) {
+                uploadButton.removeAttribute('disabled');
+            }
+        }
+    </script>
+
+</body>
+</html>

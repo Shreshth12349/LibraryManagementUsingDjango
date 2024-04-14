@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logs</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .log-table {
+            margin: 20px auto;
+            width: 80%;
+        }
+        .log-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .log-table th, .log-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .log-table th {
+            background-color: #333;
+            color: white;
+        }
+        .log-table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<div class="log-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Issued By</th>
+                <th>Issue Date Time</th>
+                <th>Due Date</th>
+                <th>Return Date Time</th>
+                <th>Return Status</th>
+                <th>Late Fee</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.book_id }}</td>
+                <td>{{ log.issued_by }}</td>
+                <td>{{ log.issue_date_time }}</td>
+                <td>{{ log.due_date }}</td>
+                <td>{{ log.return_date_time }}</td>
+                <td>{{ log.return_status }}</td>
+                <td>{{ log.late_fee }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

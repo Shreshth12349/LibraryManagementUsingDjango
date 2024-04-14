@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .message-container {
+            width: 90%;
+            height: 1in;
+            display: flex;
+            align-items: center;
+            background: limegreen;
+            justify-items: center;
+            position: absolute;
+            justify-content: center;
+            top: 2in;
+            border-radius: 20px;
+            left: 0.8in;
+        }
+        h2 {
+
+        }
+    </style>
+</head>
+<body>
+    {% include 'partials/navbar.html' %}
+<div class="message-container">
+    <h1>File uploaded successfully</h1>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+body, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+#searchbar {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#searchbar input[type="text"] {
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#searchbar button {
+    margin-top: 5px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#searchbar button:hover {
+    background-color: #555;
+}
+.result-table {
+    margin: 20px auto;
+    width: 80%;
+}
+.result-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.result-table th, .result-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.result-table th {
+    background-color: #333;
+    color: white;
+}
+.result-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.custom-radio {
+    transform: scale(1.5)
+}
+.checkout-button {
+    color: white;
+    background: #333;
+
+    border-radius: 20px;
+    height: 50px;
+    width: 110px;
+    position: absolute;
+    top: 0.7in;
+    right: 1in;
+}
+.checkout-button.clicked {
+    background-color: red;
+}
+.checkout-button:hover {
+    background: #0056b3;
+}

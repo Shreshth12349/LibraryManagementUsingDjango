@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Not Available</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .error-message {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .error-message h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .error-message p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+{% include 'partials/navbar.html' %}
+
+<div class="container">
+    <div class="error-message">
+        <h1>Book Not Available</h1>
+        <p>Sorry, the book you are trying to issue is not available at the moment.</p>
+    </div>
+</div>
+
+</body>
+</html>

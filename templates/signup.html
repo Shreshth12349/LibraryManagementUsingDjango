@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 30%;
+            margin: 100px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input[type="text"], input[type="password"] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .sign-up-button {
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 40px;
+            background: #007bff;
+            border-radius: 5px;
+            color: wheat;
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            text-decoration: none;
+        }
+        .error-message {
+            position: relative;
+            margin-bottom:10px;
+            color: red;
+            font-size: 14px;
+        }
+        .error-list {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<a class="sign-up-button" href="{% url 'login' %}">Login</a>
+<div class="container">
+    <h2>Sign up</h2>
+    <form id="signup-form" method="post" onsubmit="return validateForm()">
+        {% csrf_token %}
+        <label for="id_username">Username:</label>
+        {{ form.username }}
+        <label for="id_password">Password:</label>
+        {{ form.password1 }}
+        <label for="id_confirm_password">Confirm password:</label>
+        {{ form.password2 }}
+        <div id="password-error" class="error-message" style="display: none;">Passwords do not match.</div>
+        <button type="submit">Register</button>
+    </form>
+</div>
+{% if messages %}
+    <div class="container">
+        <ul class="error-list">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+<script>
+    function validateForm() {
+        const password = document.getElementById("id_password1").value;
+        const confirmPassword = document.getElementById("id_password2").value;
+        if (password != confirmPassword) {
+            document.getElementById("password-error").style.display = "block";
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+</html>

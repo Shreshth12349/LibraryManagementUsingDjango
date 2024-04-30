@@ -1,5 +1,3 @@
-import datetime
-
 from django.shortcuts import render, redirect
 from django.utils import timezone
 from utils.database_management import process_csv, get_book_by_id, get_student_by_registration_no

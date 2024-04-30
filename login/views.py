@@ -7,18 +7,19 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import logout
-
-
+from .decorators import anonymous_required
 @login_required
 def home(request):
     # Your home view logic here
     return render(request, 'home.html')
 
 
+@anonymous_required
 def redirect_to_login(request):
     return redirect('login')
 
 
+@anonymous_required
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
@@ -41,6 +42,7 @@ def login_view(request):
     return render(request, 'login.html', {'form': form, 'messages': messages.get_messages(request)})
 
 
+@anonymous_required
 def signup_view(request):
     if request.method == 'POST':
         print('request_received')
@@ -70,5 +72,4 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    # Redirect to a desired page after logout
-    return redirect('home')
+    return redirect('login')
